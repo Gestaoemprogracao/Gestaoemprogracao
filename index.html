@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanna Xavier Teixeira - Portfólio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container {
+            padding: 0 2rem;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 2rem;
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: white;
+        }
+
+        .about-text h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Education Section */
+        .education {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .education-card h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .subject-tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Certificates Section */
+        .certificates {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem;
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #ffd700;
+        }
+
+        .cert-card h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .company {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card .duration {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-item a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">Giovanna Xavier</a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#education">Educação</a></li>
+                <li><a href="#certificates">Certificados</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Giovanna Xavier Teixeira</h1>
+            <p>Estudante de Gestão da Tecnologia da Informação | Buscando Oportunidades em TI</p>
+            <a href="#contact" class="cta-button">Vamos Conversar!</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>🎯 Meu Objetivo</h3>
+                        <p>Sou estudante de <strong>Gestão da Tecnologia da Informação</strong> na Estácio, no 1º semestre, apaixonada por tecnologia e inovação. Estou em busca da minha primeira oportunidade profissional na área de TI.</p>
+                        
+                        <h3>🚀 Minha Missão</h3>
+                        <p>Aplicar conhecimentos técnicos e de gestão para contribuir com soluções tecnológicas inovadoras, sempre focada no aprendizado contínuo e crescimento profissional.</p>
+                    </div>
+                    <div class="about-text">
+                        <h3>💡 Competências Comportamentais</h3>
+                        <ul style="color: rgba(255,255,255,0.9); list-style: none; padding-left: 0;">
+                            <li>✅ Trabalho em equipe</li>
+                            <li>✅ Visão estratégica</li>
+                            <li>✅ Resolução de problemas</li>
+                            <li>✅ Aprendizado contínuo</li>
+                            <li>✅ Pensamento analítico</li>
+                            <li>✅ Orientação a resultados</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Gestão de TI</h4>
+                        <p>Conhecimentos em administração de recursos tecnológicos e gestão de projetos</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-network-wired"></i>
+                        <h4>Redes de Computadores</h4>
+                        <p>Fundamentos de infraestrutura de rede e comunicação de dados</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-cloud"></i>
+                        <h4>Computação em Nuvem</h4>
+                        <p>Conceitos de cloud computing e serviços em nuvem</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-robot"></i>
+                        <h4>Inteligência Artificial</h4>
+                        <p>Conhecimentos práticos em IA através de imersão especializada</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h4>Programação</h4>
+                        <p>Introdução à programação de computadores e lógica de programação</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>Pensamento Computacional</h4>
+                        <p>Resolução de problemas através do pensamento lógico e sistemático</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education" id="education">
+        <div class="container">
+            <h2>Educação</h2>
+            <div class="education-card">
+                <h3>Tecnólogo em Gestão da Tecnologia da Informação</h3>
+                <div class="institution">Universidade Estácio de Sá | 1º Semestre (2025-2027)</div>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">
+                    Curso tecnológico focado na formação de profissionais aptos a ocupar posições gerenciais e estratégicas em empresas que desenvolvem ou utilizam tecnologia.
+                </p>
+                <div class="subjects">
+                    <div class="subject-tag">Introdução à Programação</div>
+                    <div class="subject-tag">Fundamentos de Redes</div>
+                    <div class="subject-tag">Computação em Nuvem</div>
+                    <div class="subject-tag">Pensamento Computacional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="section" id="certificates">
+        <div class="container">
+            <h2>Certificações</h2>
+            <div class="certificates">
+                <div class="cert-card">
+                    <h3>Imersão Inteligência Artificial na Prática</h3>
+                    <div class="company">DAXUS | Agosto 2025</div>
+                    <div class="duration">8 horas de carga horária</div>
+                    <p style="color: rgba(255,255,255,0.9); margin-top: 1rem;">
+                        Participação em evento prático sobre aplicação de Inteligência Artificial, abordando fundamentos e implementações práticas de IA em diversas áreas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2>Vamos Conversar!</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+                Estou disponível para oportunidades de estágio ou posição júnior em TI. Entre em contato!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <p><a href="https://wa.me/5561992181141" target="_blank">+55 61 99218-1141</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <h4>LinkedIn</h4>
+                    <p><a href="https://www.linkedin.com/in/giovanna-x-0b0708133" target="_blank">giovanna-x</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Localização</h4>
+                    <p>Brasília, DF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5561992181141?text=Olá! Vi seu portfólio e gostaria de conversar sobre oportunidades." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Giovanna Xavier Teixeira. Transformando conhecimento em soluções tecnológicas inovadoras.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.skill-card, .education-card, .cert-card, .contact-item');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight * 0.8) {
+                    element.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }
+
+        // WhatsApp button interaction
+        const whatsappButton = document.querySelector('.whatsapp-float');
+        let isHovering = false;
+
+        whatsappButton.addEventListener('mouseenter', () => {
+            isHovering = true;
+            whatsappButton.style.animation = 'none';
+        });
+
+        whatsappButton.addEventListener('mouseleave', () => {
+            isHovering = false;
+            whatsappButton.style.animation = 'pulse 2s infinite';
+        });
+
+        // Initialize animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Portfolio data (JSON-like structure for potential API integration)
+        const portfolioData = {
+            "personal": {
+                "name": "Giovanna Xavier Teixeira",
+                "title": "Estudante de Gestão da Tecnologia da Informação",
+                "location": "Brasília, DF",
+                "phone": "+55 61 99218-1141",
+                "linkedin": "https://www.linkedin.com/in/giovanna-x-0b0708133",
+                "status": "Disponível para estágio/júnior"
+            },
+            "education": {
+                "course": "Gestão da Tecnologia da Informação",
+                "institution": "Universidade Estácio de Sá",
+                "semester": "1º",
+                "duration": "2025-2027",
+                "subjects": [
+                    "Introdução à Programação de Computadores",
+                    "Fundamentos de Redes de Computadores",
+                    "Computação em Nuvem",
+                    "Pensamento Computacional"
+                ]
+            },
+            "certificates": [
+                {
+                    "title": "Imersão Inteligência Artificial na Prática",
+                    "institution": "DAXUS",
+                    "date": "Agosto 2025",
+                    "hours": "8 horas"
+                }
+            ],
+            "skills": {
+                "technical": [
+                    "Gestão de TI",
+                    "Redes de Computadores",
+                    "Computação em Nuvem",
+                    "Inteligência Artificial",
+                    "Programação",
+                    "Pensamento Computacional"
+                ],
+                "behavioral": [
+                    "Trabalho em equipe",
+                    "Visão estratégica",
+                    "Resolução de problemas",
+                    "Aprendizado contínuo",
+                    "Pensamento analítico",
+                    "Orientação a resultados"
+                ]
+            }
+        };
+
+        // Console log for developers
+        console.log('💻 Portfólio de Giovanna Xavier Teixeira');
+        console.log('📊 Dados do portfólio:', portfolioData);
+        console.log('🎯 Status: Buscando oportunidades em TI');
+    </script>
+</body>
+</html>
